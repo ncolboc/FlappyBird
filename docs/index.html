@@ -23,11 +23,21 @@
 			<h2>How to create a HTML5 video game?</h2>
 			<p>Get the skill to create awesome game!</p>
 			<img src="pics/skills-puzzle.png" alt="simple stack picture">
+            <aside class="notes">
+                Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+            </aside>
 		</section>
 
 		<section>
 			<h2>Purpose of this course</h2>
-			<img src="pics/maxresdefault.jpg" alt="simple stack picture">
+            <ul>
+                <li class="fragment">1 year experience</li>
+                <li class="fragment"> MrBool Author</li>
+            </ul>
+            <img src="pics/maxresdefault.jpg" alt="simple stack picture">
+            <aside class="notes">
+
+            </aside>
 		</section>
 
 		<section id="show-a-link">
@@ -42,15 +52,95 @@
 		<section>
 
 			<section>
-				<h1>Prerequisites</h1>
-				<p>Choose the right Game Engine</p>
-				<p>Game Assets</p>
+				<h3>Prerequisites and Requirements</h3>
+                <ul>
+                    <li class="fragment">Having basic knowledge of programming</li>
+                    <li class="fragment">Choose the right Game Engine</li>
+                    <li class="fragment">Game Assets</li>
+                </ul>
+                <aside class="notes">
+                    As this is a video game which will be playable into a browser, having knowledge of HTML and Javascript, and how the web works is necessary for this course.
+                    Web game are always not very complexe and their simplicity can it possible to create them wihtout knowelgde of programming.
+                    Depending of the platform
+                    But for complexe and 3d video game like, it's necessary
+                    But it's not always the case, it's depend on the following point.
+                </aside>
 			</section>
 
+            <section>
+                <h3>Having basic/strong knowledge of programming</h3>
+                <p>Depends on the type of game</p>
+            </section>
+
 			<section>
-				<h1>Choose the right  Game Engine</h1>
-				<p class="fragment">What is a Game Engine?</p>
-				<p class="fragment">Which HTML5 Game Engine is right for you?</p>
+				<h3>Choose the right  Game Engine</h3>
+				<ul>
+                   <li class="fragment">Definition</li>
+                   <li class="fragment">Which HTML5 Game Engine is right for your project?</li>
+                </ul>
+               <div style="margin-top:40px;font-size: 24px">
+                   <table class="fragment">
+                       <thead>
+                       <tr>
+                           <th>Name</th>
+                           <th>Cost</th>
+                           <th>Rating</th>
+                           <th>Functionalities</th>
+                           <th>Last Release</th>
+                           <th>Link</th>
+                       </tr>
+                       </thead>
+                       <tbody>
+                       <tr>
+                           <td>Construct 2</td>
+                           <td>free(limited)/100-400€</td>
+                           <td>4/5</td>
+                           <td><span style="border: 1px solid #ddd;border-radius: 5px;">game maker</span></td>
+                           <td>Aug 19th 2014</td>
+                           <td>link</td>
+                       </tr>
+                       <tr>
+                           <td>ImpactJS</td>
+                           <td>$99</td>
+                           <td>4/5</td>
+                           <td></td>
+                           <td>Jul 28th 2014</td>
+                           <td>link</td>
+                       </tr>
+                       <tr>
+                           <td>Phaser</td>
+                           <td>free (MIT)</td>
+                           <td>4.5/5</td>
+                           <td></td>
+                           <td>Feb 23rd 2015</td>
+                           <td>link</td>
+                       </tr>
+                       <tr>
+                           <td>GameMaker</td>
+                           <td>$200</td>
+                           <td>4/5</td>
+                           <td></td>
+                           <td>Aug 8th 2014</td>
+                           <td>link</td>
+                       </tr>
+                       </tbody>
+                   </table>
+                </div>
+
+				<aside class="notes">
+                    A Game Engine is is a software framework which is designed to help developer to create video game.
+                    Some core functionalities provided by a game engine are typically:
+                    - rendering engine (load/display/animate 2d image, 3d models)
+                    - a physic engine (simulate gravity, wind, mouvement of a bounced ball by example)
+                    - collision detection (when you walk into a wall, you should be stop and not go throught it)
+                    - artificial intelligence (to simulate ennemies' behavior)
+                    - networking (provide easy way to develop multiplayer game)
+                    - sound, music
+                    - an avantage of using game engine is this reusability, and possibility to port game to another platform
+                    ----------------------------------------------------------------------------------------------------------
+                    Here is a table which compare some major html5 game engine available on the market
+                    As you can see,
+                </aside>
 			</section>
 
 			<section>
@@ -102,6 +192,10 @@
 <script>
 	// Required, even if empty.
 	Reveal.initialize({
+        dependencies: [
+            // Speaker notes
+            { src: 'plugin/notes/notes.js', async: true },
+        ]
 	});
 </script>
 </body>
