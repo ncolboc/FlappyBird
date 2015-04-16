@@ -13,8 +13,15 @@
     <div id="canvas">
     </div>
 
+    <button onclick="test()"></button>
     <script type="text/javascript" src="libs/phaser.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
+
+<script>
+    function test(){
+        game.state.states.main.toggleBackground();
+    }
+</script>
 
 </body>
 </html>

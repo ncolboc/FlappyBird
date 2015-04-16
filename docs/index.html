@@ -5,10 +5,9 @@
 	<title>Reveal.js 3 Slide Demo</title>
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/league.css" id="theme">
-	<!--Add support for earlier versions of Internet Explorer -->
-	<!--[if lt IE 9]>
-	<script src="lib/js/html5shiv.js"></script>
-	<![endif]-->
+    <link rel="stylesheet" href="lib/font-awesome-4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/lightbox-2.7.1/lightbox/css/lightbox.css"  />
+    <link rel="stylesheet" href="css/custom.css"  />
 </head>
 
 <body>
@@ -144,13 +143,37 @@
 			</section>
 
 			<section>
-				<h1>Game Assets</h1>
-				<p class="fragment">images: background images, sprites</p>
-				<p class="fragment">sound: music, ...</p>
-				<p class="fragment">font</p>
-				<p class="fragment">video</p>
-				<p class="fragment">3D models</p>
-				<p class="fragment">Where to find them</p>
+				<h3>Game Assets</h3>
+                <audio id="snd_coin" src="audio/smb_coin.wav"></audio>
+                <audio id="smb_breakblock" src="audio/smb_breakblock.wav"></audio>
+                <audio id="smb_jump_small" src="audio/smb_jump-small.wav"></audio>
+                <audio id="smb_stage_clear" src="audio/smb_stage_clear.wav"></audio>
+                <ul style="list-style-type: none;">
+                    <li class="fragment"><i class="fa fa-picture-o" style="margin-right:20px"></i>Image Files (<a href="pics/marioworld1bl4nq.png.jpg" data-lightbox="image-1">sprites</a>, <a href="pics/level_background_for_a_mobile_game__by_bvigec-d5vi8b0.jpg" data-lightbox="image-1">background images</a>, <a href="pics/free-ship-3d-model.jpg" data-lightbox="image-1">textures</a>)</li>
+                    <li class="fragment">
+                        <i class="fa fa-music" style="margin-right:20px"></i>Sound Effects & Music Files
+                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:coin" onclick="document.getElementById('snd_coin').play()"></i>
+                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:breakblock" onclick="document.getElementById('smb_breakblock').play()"></i>
+                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:jump_small" onclick="document.getElementById('smb_jump_small').play()"></i>
+                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('smb_stage_clear').play()"></i>
+                    </li>
+                    <li class="fragment"><i class="fa fa-film" style="margin-right:20px"></i>Video Files </li>
+                    <li class="fragment"><i class="fa fa-codepen" style="margin-right:20px"></i>3d Model Files (<a href="pics/sonic.jpg" data-lightbox="image-2">Sonic</a>)</li>
+                    <li class="fragment"><i class="fa fa-file-text-o" style="margin-right:20px"></i>Data Files</li>
+                    <li class="fragment"><i class="fa fa-font" style="margin-right:20px"></i>Font Files</li>
+                </ul>
+                <br/>
+				<p class="fragment" style="text-align: left;margin-bottom: 0px">
+                    <img src="pics/IMG_Dessin_Enfants_2.png" align="left" style="width: 150px;margin:0 20px 0 75px"/>
+                    If, you're not very good at drawing...
+                    <div class="fragment" style="text-align: left;">
+                        there is a solution...the web!
+                        <ul style="list-style-type: none;">
+                            <li>- http://opengameart.org/</li>
+                            <li>- <a href="pics/Mobile - Flappy Bird - General Sprites.jpg" data-lightbox="image-3">http://www.spriters-resource.com/</a></li>
+                        </ul>
+                     </div>
+                </p>
 			</section>
 
 		</section>
@@ -161,6 +184,8 @@
 			<p>add bird</p>
 			<p>add floor</p>
 			<p>add start button</p>
+            <div id="canvas">
+            </div>
 		</section>
 
 		<section>
@@ -188,7 +213,12 @@
 </div>
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="lib/js/html5shiv.js"></script>
+<script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/lightbox.min.js"></script>
+<script type="text/javascript" src="lib/phaser/phaser.min.js"></script>
+<script type="text/javascript" src="lib/phaser/main.js"></script>
 <script>
 	// Required, even if empty.
 	Reveal.initialize({
