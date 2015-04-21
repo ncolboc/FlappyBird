@@ -1,0 +1,121 @@
+/**
+ * Created by macfly on 11/04/2015.
+ */
+
+
+var flagLoopVelocity = false;
+var game = new Phaser.Game(640, 960,Phaser.AUTO,'canvas');
+game.transparent = false;
+
+var gameState = {
+
+};
+
+gameState.load = function(){};
+gameState.load.prototype = {
+    preload: function(){
+        this.game.stage.scaleMode = Phaser.StageScaleMode.SHOW_ALL;
+        this.game.stage.scale.setShowAll();
+        window.addEventListener('resize', function () {
+            this.game.stage.scale.refresh();
+        });
+        this.game.stage.scale.refresh();
+
+        //load sprites
+        this.game.load.image('background',prefixPathSrc+'assets/img/background.png');
+        this.game.load.image('title',prefixPathSrc+'assets/img/flappy.png');
+        this.game.load.image('title_get_ready',prefixPathSrc+'assets/img/ready.png');
+        this.game.load.image('ground',prefixPathSrc+'assets/img/ground.png');
+        this.game.load.atlasJSONHash('bird',prefixPathSrc+'assets/img/bird.png',prefixPathSrc+'assets/data/bird.json');
+    },
+    create: function () {
+        game.state.start('main');
+    }
+};
+
+gameState.main = function(){};
+gameState.main.prototype = {
+    create:function(){
+
+        this.background = this.game.add.sprite(0, 0, 'background');
+        this.background.width = this.game.width;
+        this.background.height = this.game.height;
+        this.background.visible = false;
+
+        this.title = this.game.add.sprite(0, 0, 'title');
+        this.title.x = (this.game.width - this.title.width)/2;
+        this.title.y = 50;
+        this.title.visible = false;
+
+        this.title_ready = this.game.add.sprite(0, 0, 'title_get_ready');
+        this.title_ready.x = (this.game.width - this.title_ready.width)/2;
+        this.title_ready.y = 250;
+        this.title_ready.visible = false;
+
+        this.ground = this.game.add.sprite(0, 0,'ground');
+        this.ground.x = 0;
+        this.ground.y = this.game.height-this.ground.height;
+        this.ground.body.velocity.x = 0;
+        this.ground.body.immovable = true;
+        this.ground.visible = false;
+
+        this.bird = this.game.add.sprite(200,0,'bird');
+        this.bird.width = this.bird.width / 6.5;
+        this.bird.height = this.bird.height / 6.5;
+        this.bird.y = (this.game.height - this.bird.height)/2;
+        this.bird.anchor.setTo(0.5, 0.5);
+        this.bird.animations.add('fly');
+        this.bird.visible = false;
+
+        this.tweenFlap = this.game.add.tween(this.bird);
+        this.tweenFlap.to({ y: this.bird.y + 20}, 400, Phaser.Easing.Quadratic.InOut, true, 0, 10000000000, true);
+        this.tweenFlap.pause();
+
+        // Au click, on appelle la fonction "start()"
+        this.game.input.onTap.add(this.start, this);
+
+    },
+    update:function(){
+        if(flagLoopVelocity && this.ground.x + this.ground.width / 2 <= 0) {
+            this.ground.x = 0;
+        }
+        //this.ground.tilePosition.x -= 2;
+    },
+    start:function(){
+
+    },
+    toggleImgDisplay: function (spriteName) {
+        this[spriteName].visible = !this[spriteName].visible;
+    },
+    toggleBirdTween:function(){
+        if (this.tweenFlap._paused)
+            this.tweenFlap.resume();
+        else
+            this.tweenFlap.pause();
+    },
+    toggleGroundVelocity:function(){
+        this.ground.x = 0;
+        if (this.ground.body.velocity.x == 0)
+            this.ground.body.velocity.x = -250;
+        else
+            this.ground.body.velocity.x = 0;
+    },
+    loopGroundVelocity:function(){
+        flagLoopVelocity = !flagLoopVelocity;
+    },
+    toggleBirdAnimation:function(){
+        if (this.bird && this.bird.animations){
+            if (this.bird.animations._anims.fly.isPlaying)
+                this.bird.animations.stop();
+            else
+                this.bird.animations.play('fly', 8, true);
+        }
+    },
+    restartGame: function () {
+        game.state.start(game.state.current);
+    }
+};
+
+game.state.add('load', gameState.load);
+game.state.add('main', gameState.main);
+game.state.start('load');

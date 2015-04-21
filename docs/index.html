@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="css/theme/league.css" id="theme">
     <link rel="stylesheet" href="lib/font-awesome-4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/lightbox-2.7.1/lightbox/css/lightbox.css"  />
+    <link rel="stylesheet" href="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/css/normalize.css"  />
+    <link rel="stylesheet" href="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/css/style3.css"  />
     <link rel="stylesheet" href="css/custom.css"  />
 </head>
 
@@ -18,30 +20,34 @@
 
 		<!-- ALL SLIDES GO HERE -->
 		<!-- Each section element contains an individual slide -->
-		<section>
+		<section data-state="intro" >
+            <div style="width:100%"></div>
 			<h2>How to create a HTML5 video game?</h2>
 			<p>Get the skill to create awesome game!</p>
-			<img src="pics/skills-puzzle.png" alt="simple stack picture">
-            <aside class="notes">
-                Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-            </aside>
 		</section>
 
 		<section>
-			<h2>Purpose of this course</h2>
+			<h3>Outline of this talk</h3>
             <ul>
-                <li class="fragment">1 year experience</li>
-                <li class="fragment"> MrBool Author</li>
+                <li class="fragment">Introduction to 2D Video Game development</li>
+                <li class="fragment">We will create from scratch a funny game</li>
+                <li class="fragment">HTML video game: flappy bird</li>
             </ul>
-            <img src="pics/maxresdefault.jpg" alt="simple stack picture">
-            <aside class="notes">
-
-            </aside>
 		</section>
 
 		<section id="show-a-link">
-			<h2>Brief Description of Flappy Bird</h1>
-				<img src="pics/Flappy_Bird_icon.png" style="border:none" alt="simple stack picture">
+			<h3>Flappy Bird</h3>
+            <ul>
+                <li class="fragment">Description</li>
+                <li class="fragment">Gameplay</li>
+                <li class="fragment">Timeline of its brief life</li>
+                <ul class="fragment">
+                    <li>First Release: May 24, 2013</li>
+                    <li>Popularity: in early 2014</li>
+                    <li>Removal: February 10, 2014</li>
+                </ul>
+                <li class="fragment">Swing Copters</li>
+            </ul>
 		</section>
 
 		<section>
@@ -53,23 +59,10 @@
 			<section>
 				<h3>Prerequisites and Requirements</h3>
                 <ul>
-                    <li class="fragment">Having basic knowledge of programming</li>
                     <li class="fragment">Choose the right Game Engine</li>
                     <li class="fragment">Game Assets</li>
                 </ul>
-                <aside class="notes">
-                    As this is a video game which will be playable into a browser, having knowledge of HTML and Javascript, and how the web works is necessary for this course.
-                    Web game are always not very complexe and their simplicity can it possible to create them wihtout knowelgde of programming.
-                    Depending of the platform
-                    But for complexe and 3d video game like, it's necessary
-                    But it's not always the case, it's depend on the following point.
-                </aside>
 			</section>
-
-            <section>
-                <h3>Having basic/strong knowledge of programming</h3>
-                <p>Depends on the type of game</p>
-            </section>
 
 			<section>
 				<h3>Choose the right  Game Engine</h3>
@@ -125,21 +118,6 @@
                        </tbody>
                    </table>
                 </div>
-
-				<aside class="notes">
-                    A Game Engine is is a software framework which is designed to help developer to create video game.
-                    Some core functionalities provided by a game engine are typically:
-                    - rendering engine (load/display/animate 2d image, 3d models)
-                    - a physic engine (simulate gravity, wind, mouvement of a bounced ball by example)
-                    - collision detection (when you walk into a wall, you should be stop and not go throught it)
-                    - artificial intelligence (to simulate ennemies' behavior)
-                    - networking (provide easy way to develop multiplayer game)
-                    - sound, music
-                    - an avantage of using game engine is this reusability, and possibility to port game to another platform
-                    ----------------------------------------------------------------------------------------------------------
-                    Here is a table which compare some major html5 game engine available on the market
-                    As you can see,
-                </aside>
 			</section>
 
 			<section>
@@ -152,10 +130,10 @@
                     <li class="fragment"><i class="fa fa-picture-o" style="margin-right:20px"></i>Image Files (<a href="pics/marioworld1bl4nq.png.jpg" data-lightbox="image-1">sprites</a>, <a href="pics/level_background_for_a_mobile_game__by_bvigec-d5vi8b0.jpg" data-lightbox="image-1">background images</a>, <a href="pics/free-ship-3d-model.jpg" data-lightbox="image-1">textures</a>)</li>
                     <li class="fragment">
                         <i class="fa fa-music" style="margin-right:20px"></i>Sound Effects & Music Files
-                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:coin" onclick="document.getElementById('snd_coin').play()"></i>
-                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:breakblock" onclick="document.getElementById('smb_breakblock').play()"></i>
-                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:jump_small" onclick="document.getElementById('smb_jump_small').play()"></i>
-                        <i class="fa fa-file-audio-o" style="margin:0 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('smb_stage_clear').play()"></i>
+                        <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:coin" onclick="document.getElementById('snd_coin').play()"></i></a>
+                        <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:breakblock" onclick="document.getElementById('smb_breakblock').play()"></i></a>
+                        <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:jump_small" onclick="document.getElementById('smb_jump_small').play()"></i></a>
+                        <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('smb_stage_clear').play()"></i></a>
                     </li>
                     <li class="fragment"><i class="fa fa-film" style="margin-right:20px"></i>Video Files </li>
                     <li class="fragment"><i class="fa fa-codepen" style="margin-right:20px"></i>3d Model Files (<a href="pics/sonic.jpg" data-lightbox="image-2">Sonic</a>)</li>
@@ -165,12 +143,16 @@
                 <br/>
 				<p class="fragment" style="text-align: left;margin-bottom: 0px">
                     <img src="pics/IMG_Dessin_Enfants_2.png" align="left" style="width: 150px;margin:0 20px 0 75px"/>
-                    If, you're not very good at drawing...
+                    If, you're not a good artist (drawing, creating musics and sound effects)...
                     <div class="fragment" style="text-align: left;">
-                        there is a solution...the web!
-                        <ul style="list-style-type: none;">
-                            <li>- http://opengameart.org/</li>
-                            <li>- <a href="pics/Mobile - Flappy Bird - General Sprites.jpg" data-lightbox="image-3">http://www.spriters-resource.com/</a></li>
+                        <ul style="margin-left: 110px;">
+                            <li>Use the web! (Free Tools, Sprite Resources Web Sites)</li>
+                            <li class="fragment">
+                                Look at video game files
+                                <a href="pics/file_1.PNG" data-lightbox="image-10" style="margin-left: 10px"><i class="fa fa-file-text-o"></i></a>
+                                <a href="pics/file_2.PNG" data-lightbox="image-10" style="margin-left: 10px"><i class="fa fa-file-audio-o"></i></a>
+                                <a href="pics/atlas.png" data-lightbox="image-10" style="margin-left: 10px"><i class="fa fa-file-image-o"></i></a>
+                            </li>
                         </ul>
                      </div>
                 </p>
@@ -178,55 +160,290 @@
 
 		</section>
 
-		<section>
-			<h1>I - Create Menu</h1>
-			<p>add background</p>
-			<p>add bird</p>
-			<p>add floor</p>
-			<p>add start button</p>
-            <div id="canvas">
-            </div>
+		<section id="game_menu">
+			<h3>I - Create Menu<img id="trigger-overlay" onclick="loadGameSection('game_menu')" src="pics/flappy_bird.png" class="shadowed"></h3>
+            <ul>
+                <li class="fragment">Load and display image resources <a href="pics/marioworld1bl4nq.png.jpg" data-lightbox="image-1"><i class="fa fa-file-image-o"></i></a></li>
+                <li class="fragment">Definition: Sprite</li>
+            </ul>
+            <ul style="margin-left:100px">
+                <li class="fragment" style="list-style-type: circle;">static sprite: background image, title</li>
+                <li class="fragment" style="list-style-type: circle;">animated sprite: the bird character</li>
+                <li class="fragment" style="list-style-type: circle;">tiled sprite: the floor</li>
+            </ul>
+            </ul>
+            <aside class="notes">
+
+            </aside>
+		</section>
+
+		<section id="game_physic">
+			<h3>II - Bird Behavior<img id="trigger-overlay_physic" onclick="loadGameSection('game_physic')" src="pics/flappy_bird.png" class="shadowed"></h3>
+            <ul>
+                <li class="fragment">Character animation using Physic Engine</li>
+                <ul>
+                    <li class="fragment" >Apply Gravity</li>
+                    <li class="fragment" >Apply Velocity</li>
+                    <li class="fragment" >Apply Rotation<a href="pics/bird.jpg" style="margin-left: 20px" data-lightbox="image-4"><i class="fa fa-file-image-o"></i></a></li>
+                </ul>
+                <li class="fragment">Detect Collision with floor</li>
+            </ul>
+            <aside class="notes">
+                Let's now analyse the bird behavior when you play
+                when you click, there is a little jump but you also constate that the bird is soumise to the gravity
+                All game engine comes with a physic engine, phaser ne fait pas exception, you can add gravity and velocity to all sprite
+                or to one sprite
+                velocity is only vertical, as you see before we simulate that the bird fly with the ground animation and sprite animation.
+                but the sprite bird stay always in the middle of the screen.
+            </aside>
+		</section>
+
+		<section id="game_pipe">
+			<h3>III - Obstacles Generation<img id="trigger-overlay_pipe" onclick="loadGameSection('game_pipe')" src="pics/flappy_bird.png" class="shadowed"></h3>
+            <ul>
+                <li class="fragment">
+                    Load Pipe sprites
+                    <a href="pics/morceaux-pipe.jpg" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/tuyaux.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                </li>
+                <li class="fragment" >Use Timer</li>
+                <li class="fragment" >Determine space's position between pipe pair</li>
+                <li class="fragment">Generate top & bottom pipes around space</li>
+                <li class="fragment">Adapt level of difficulty</li>
+                <li class="fragment">
+                    Add collision detection
+                    <a href="pics/collision.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                </li>
+            </ul>
 		</section>
 
 		<section>
-			<h1>II - Enabling Physics</h1>
-			<p>Setting Gravity</p>
-			<p>Making Things Collide<p>
-		</section>
+            <audio id="sfx_die" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_die.ogg"></audio>
+            <audio id="sfx_hit" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_hit.ogg"></audio>
+            <audio id="sfx_point" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_point.ogg"></audio>
+            <audio id="sfx_swooshing" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_swooshing.ogg"></audio>
+            <audio id="sfx_wing" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_wing.ogg"></audio>
 
-		<section>
-			<h1>III - User interactions</h1>
-			<p>Update Bird Gravity</p>
-			<p>Update Bird animation<p>
-		</section>
-
-		<section>
-			<h1>IV - Obstacles Generation</h1>
-			<p>Update Bird collision<p>
-		</section>
-
-		<section>
-			<h1>V - Scoring and sound</h1>
+			<h3>IV - Scoring and Sound Effect<img id="trigger-overlay_sound" onclick="loadGameSection('game_sound')" src="pics/flappy_bird.png" class="shadowed"></h3>
+            <ul>
+                <li class="fragment">Display Player Score<a href="pics/numbers.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a></li>
+                <li class="fragment">Add Sound Effects
+                    <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:coin" onclick="document.getElementById('sfx_die').play()"></i></a>
+                    <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:breakblock" onclick="document.getElementById('sfx_hit').play()"></i></a>
+                    <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:jump_small" onclick="document.getElementById('sfx_point').play()"></i></a>
+                    <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('sfx_swooshing').play()"></i></a>
+                    <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('sfx_wing').play()"></i></a>
+                </li>
+                <li class="fragment">Add GameOver Screen</li>
+            </ul>
 		</section>
 
 	</div>
+
+    <!-- open/close -->
+    <div class="overlay2 overlay-slidedown" style="z-index: 100">
+        <button type="button" class="overlay-close">Close</button>
+        <div id="gameOptions" style="position: absolute;font-size: 70%;left: 10%;top:20%">
+            <span style="color:#4E4242;border-bottom: 2px solid #4E4242;display:block;padding-bottom: 10px;width: 260px;">
+                Options
+                <i onclick="game.state.states.main.restartGame();uncheckIcons('options_game_physic');" class="fa fa-2x fa-refresh restartGame"></i>
+            </span>
+
+            <!-- game options Menu section -->
+            <div id="options_game_menu"  class="outer-nav" style="margin-top: 50px;display:none;  text-align: right;">
+                <a>
+                    <span>Background Image</span>
+                    <i onclick="game.state.states.main.toggleImgDisplay('background');toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Title</span>
+                    <i onclick="game.state.states.main.toggleImgDisplay('title');toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Sub-Title & Info</span>
+                    <i onclick="game.state.states.main.toggleImgDisplay('title_ready');toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Bird</span>
+                    <i onclick="game.state.states.main.toggleImgDisplay('bird');toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i onclick="game.state.states.main.toggleBirdAnimation();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i onclick="game.state.states.main.toggleBirdTween();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Floor</span>
+                    <i onclick="game.state.states.main.toggleImgDisplay('ground');toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i onclick="game.state.states.main.toggleGroundVelocity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i onclick="game.state.states.main.loopGroundVelocity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+            </div>
+
+            <!-- game options Physic section -->
+            <div id="options_game_physic" class="outer-nav" style="margin-top: 50px;display:none;  text-align: right;">
+                <a>
+                    <span>Enable click event</span>
+                    <i onclick="game.state.states.main.toggleClickEvent();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Apply Gravity</span>
+                    <i onclick="game.state.states.main.toggleGravity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Add Velocity</span>
+                    <i onclick="game.state.states.main.setVelocity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+            </div>
+
+            <!-- game options Pipe section -->
+            <div id="options_game_pipe" class="outer-nav" style="margin-top: 50px;display:none;margin-left: -50px;  text-align: right;">
+                <a>
+                    <span>Enable click event</span>
+                    <i onclick="game.state.states.main.togglePipeGeneration();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Add Pipe Sprite</span>
+                    <i onclick="game.state.states.main.addPipe();" class="fa fa-2x fa-plus-square"></i>
+                </a>
+                <a>
+                    <span>Add Bottom Pipe Sprite</span>
+                    <i onclick="game.state.states.main.addBottomPipe();" class="fa fa-2x fa-plus-square"></i>
+                </a>
+                <a>
+                    <span>Add Top Pipe Sprite</span>
+                    <i onclick="game.state.states.main.addTopPipe();" class="fa fa-2x fa-plus-square"></i>
+                </a>
+                <a>
+                    <span>Show Collide Box</span>
+                    <i onclick="game.state.states.main.toggleCollideBox();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Enable Collide Polygon</span>
+                    <i onclick="game.state.states.main.toggleCollidePolygon();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+            </div>
+
+            <!-- game options sound section -->
+            <div id="options_game_sound" class="outer-nav" style="margin-top: 50px;display:none;margin-left: -50px;  text-align: right;">
+                <a>
+                    <span>Enable click event</span>
+                    <i onclick="game.state.states.main.togglePipeGeneration();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+
+            </div>
+
+        </div>
+        <div id="canvas">
+
+        </div>
+    </div>
+
 </div>
+
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="lib/js/html5shiv.js"></script>
 <script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/lightbox.min.js"></script>
+
+<script type="text/javascript" src="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/js/classie.js"></script>
+<script type="text/javascript" src="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/js/demo1.js"></script>
+
+
+
 <script type="text/javascript" src="lib/phaser/phaser.min.js"></script>
-<script type="text/javascript" src="lib/phaser/main.js"></script>
+
+
 <script>
+
+
+
 	// Required, even if empty.
 	Reveal.initialize({
+        history: true,
+
         dependencies: [
             // Speaker notes
             { src: 'plugin/notes/notes.js', async: true },
         ]
 	});
+
+    Reveal.addEventListener( 'slidechanged', function( event ) {
+
+        //if section begin by 'game_', try to load specific game according to the slide
+        //if (event.currentSlide.id.indexOf('game_') === 0)
+        //    loadGameSection(event.currentSlide.id);
+        //destroyGame();
+
+    } );
+
+    function toggleIcon(element){
+        var element = $(element);
+        if (element.hasClass("fa-check-square-o"))
+            element.removeClass("fa-check-square-o").addClass("fa-square-o");
+        else
+            element.removeClass("fa-square-o").addClass("fa-check-square-o");
+    }
+
+    function uncheckIcons(){
+
+        if ( $('#options_game_menu').is(':visible') )
+            $('#options_game_menu .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        else if ( $('#options_game_physic').is(':visible') )
+            $('#options_game_physic .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        else if ( $('#options_game_pipe').is(':visible') )
+            $('#options_game_pipe .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        else if ( $('#options_game_sound').is(':visible') )
+            $('#options_game_sound .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+    }
+
+    function destroyGame(){
+        //clean old game instance if exists
+        if (window.game !== undefined){
+            window.game.destroy();
+            $( "#canvas" ).remove();
+            $( "#gameOptions" ).after( "<div id='canvas'></div>" );
+        }
+
+        //hide all options container
+        $('#gameOptions > div').hide();
+    }
+
+    function loadGameSection(sectionName){
+
+
+        destroyGame();
+
+
+        switch (sectionName){
+            case 'game_menu':{
+                window.prefixPathSrc = "../1_MenuTutorial/";
+                $.getScript("../1_MenuTutorial/main.js");
+                $('#options_'+sectionName).show();
+                break;
+            }
+            case 'game_physic':{
+                window.prefixPathSrc = "../2_PhysicTutorial/";
+                $.getScript("../2_PhysicTutorial/physicTutorial.js");
+                $('#options_'+sectionName).show();
+                break;
+            }
+            case 'game_pipe':{
+                window.prefixPathSrc = "../3_ObstacleTutorial/";
+                $.getScript("../3_ObstacleTutorial/main.js");
+                $('#options_'+sectionName).show();
+                break;
+            }
+            case 'game_sound':{
+                window.prefixPathSrc = "../4_ScoringAndSoundTutorial/";
+                $.getScript("../4_ScoringAndSoundTutorial/main.js");
+                $('#options_'+sectionName).show();
+                break;
+            }
+        }
+
+    }
+
 </script>
 </body>
 </html>

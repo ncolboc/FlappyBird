@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Flappy Bird Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../style.css"/>
+
+</head>
+<body>
+
+    <div id="canvas">
+    </div>
+
+    <button onclick="game.state.states.main.toggleImgDisplay('background')">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleImgDisplay('title')">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleImgDisplay('title_ready')">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleImgDisplay('bird')">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleBirdAnimation()">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleBirdTween()">tttttttttt</button>
+    <button onclick="game.state.states.main.toggleImgDisplay('ground')">ground</button>
+    <button onclick="game.state.states.main.toggleGroundVelocity()">tttttttttt</button>
+    <button onclick="game.state.states.main.loopGroundVelocity()">tttttttttt</button>
+    <script type="text/javascript" src="../libs/phaser.min.js"></script>
+    <script type="text/javascript" src="../menuTutorial.js"></script>
+
+<script>
+    function test(){
+        game.state.states.main.toggleBackground();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Flappy Bird Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+
+    <div id="canvas">
+    </div>
+    <button onclick="game.state.states.main.addPipe()">add pipe</button>
+    <button onclick="game.state.states.main.addTopPipe()">add top pipe</button>
+    <button onclick="game.state.states.main.addBottomPipe()">add bottom pipe</button>
+    <button onclick="game.state.states.main.togglePipeGeneration()">Toggle</button>
+    <button onclick="game.state.states.main.toggleCollideBox()">Collide</button>
+    <button onclick="game.state.states.main.toggleCollidePolygon()">Collide poly</button>
+    <script type="text/javascript" src="../libs/phaser.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+    <script>
+        var prefixPathSrc = "";
+    </script>
+
+</body>
+</html>
