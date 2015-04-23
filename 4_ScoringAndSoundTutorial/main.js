@@ -2,6 +2,9 @@
  * Created by macfly on 11/04/2015.
  */
 
+var showSpriteScore = false;
+var enableSound = false;
+var enableGameOver = false;
 var bestScore = 0;
 var game = new Phaser.Game(640, 960,Phaser.AUTO,'canvas');
 game.transparent = false;
@@ -53,6 +56,8 @@ gameState.load.prototype = {
 
         // Quand on clique sur le bouton play
         this.game.load.audio('btn', [prefixPathSrc+'assets/snd/sfx_swooshing.ogg']);
+
+        this.game.sound.mute = true;
     },
     create: function () {
         game.state.start('main');
@@ -267,6 +272,7 @@ gameState.main.prototype = {
 
         for(var i = 0; i < spritesScore.length; i++) {
             spritesScore[i].x += x - widthNumbers / 2 + (spriteScore.width/2);
+            spritesScore[i].visible = showSpriteScore;
         }
 
         return spritesScore;
@@ -281,7 +287,10 @@ gameState.main.prototype = {
 
         this.title.visible = false;
         this.title_ready.visible = false;
-        this.spritesScore[0].visible = true;
+
+        if (showSpriteScore)
+            this.spritesScore[0].visible = true;
+
         // Gravité de l'oiseau
         this.bird.body.gravity.y = 2000;
         // Premier saut
@@ -385,34 +394,38 @@ gameState.main.prototype = {
             this.spritesScore = new Array();
 
             //add gameover title
-            this.game.add.tween(this.gameOver).to( { alpha: 1 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
-            this.game.add.tween(this.btnPlay).to( { alpha: 1 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
-            this.game.add.tween(this.panelScore).to( { y: 300 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
+            if (enableGameOver){
 
-            var self = this;
+                this.game.add.tween(this.gameOver).to( { alpha: 1 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
+                this.game.add.tween(this.btnPlay).to( { alpha: 1 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
+                this.game.add.tween(this.panelScore).to( { y: 300 }, 300, Phaser.Easing.Linear.None, true, 0, 0, true);
 
-            this.btnPlay.events.onInputDown.add(function() {
-                self.btnPlay.y += 10;
-            });
-            this.btnPlay.events.onInputUp.add(function() {
-                self.btnPlay.y -= 10;
-                self.soundBtn.play();
-                self.restartGame();
-            });
+                var self = this;
+
+                this.btnPlay.events.onInputDown.add(function() {
+                    self.btnPlay.y += 10;
+                });
+                this.btnPlay.events.onInputUp.add(function() {
+                    self.btnPlay.y -= 10;
+                    self.soundBtn.play();
+                    self.restartGame();
+                });
+
+
+
+                this.spritesScore = this.writeScore(this.spritesScore,this.score,this.game.width-150,390,0.5,0);
+                for (var i=0;i<this.spritesScore.length;i++)
+                    this.game.add.tween(this.spritesScore[i]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, true);
+
+                if (this.score>bestScore)
+                    bestScore = this.score;
+
+                this.spritesBestScore = this.writeScore(this.spritesBestScore,bestScore,this.game.width-150,475,0.5,0);
+                for (var i=0;i<this.spritesBestScore.length;i++)
+                    this.game.add.tween(this.spritesBestScore[i]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, true);
+            }
 
             this.birdHitGround = true;
-
-            this.spritesScore = this.writeScore(this.spritesScore,this.score,this.game.width-150,390,0.5,0);
-            for (var i=0;i<this.spritesScore.length;i++)
-                this.game.add.tween(this.spritesScore[i]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, true);
-
-            if (this.score>bestScore)
-                bestScore = this.score;
-
-            this.spritesBestScore = this.writeScore(this.spritesBestScore,bestScore,this.game.width-150,475,0.5,0);
-            for (var i=0;i<this.spritesBestScore.length;i++)
-                this.game.add.tween(this.spritesBestScore[i]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None, true, 0, 0, true);
-
             this.gameFinish();
         }
     },
@@ -446,6 +459,19 @@ gameState.main.prototype = {
     pauseGame: function () {
         this.game.paused = true;
     },
+    toggleScore: function () {
+        showSpriteScore = !showSpriteScore;
+        this.restartGame();
+    },
+    enableSound : function () {
+        enableSound = !enableSound;
+        game.sound.mute = !enableSound;
+        this.restartGame();
+    },
+    enableGameOverScreen: function () {
+        enableGameOver = !enableGameOver;
+        this.restartGame();
+    }
 
 };
 

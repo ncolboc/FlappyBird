@@ -7,9 +7,13 @@
 	<link rel="stylesheet" href="css/theme/league.css" id="theme">
     <link rel="stylesheet" href="lib/font-awesome-4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="lib/lightbox-2.7.1/lightbox/css/lightbox.css"  />
+    <link rel="stylesheet" href="lib/lightview-3.4.0/css/lightview/lightview.css"  />
+
     <link rel="stylesheet" href="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/css/normalize.css"  />
     <link rel="stylesheet" href="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/css/style3.css"  />
     <link rel="stylesheet" href="css/custom.css"  />
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +35,7 @@
             <ul>
                 <li class="fragment">Introduction to 2D Video Game development</li>
                 <li class="fragment">We will create from scratch a funny game</li>
-                <li class="fragment">HTML video game: flappy bird</li>
+                <img class="fragment" src="pics/Flappy-Bird-Logo-Pictures-Wallpaper-HD-620x330.jpg" align="left" style="width: 650px;"/></li>
             </ul>
 		</section>
 
@@ -50,7 +54,7 @@
             </ul>
 		</section>
 
-		<section>
+		<section data-transition="zoom">
 			<h1>Let's start!</h1>
 		</section>
 
@@ -77,7 +81,7 @@
                            <th>Name</th>
                            <th>Cost</th>
                            <th>Rating</th>
-                           <th>Functionalities</th>
+                           <th>Type</th>
                            <th>Last Release</th>
                            <th>Link</th>
                        </tr>
@@ -89,31 +93,32 @@
                            <td>4/5</td>
                            <td><span style="border: 1px solid #ddd;border-radius: 5px;">game maker</span></td>
                            <td>Aug 19th 2014</td>
-                           <td>link</td>
+                           <td><a href="pics/construct2.jpg" style="margin-left: 20px" data-lightbox="image-4"><i class="fa fa-file-image-o"></i></a></td>
                        </tr>
                        <tr>
                            <td>ImpactJS</td>
                            <td>$99</td>
                            <td>4/5</td>
-                           <td></td>
+                           <td><span style="border: 1px solid #ddd;border-radius: 5px;">js engine + level editor</span>
+                           </td>
                            <td>Jul 28th 2014</td>
-                           <td>link</td>
+                           <td><a href="pics/impact.png" style="margin-left: 20px" data-lightbox="image-4"><i class="fa fa-file-image-o"></i></a></td>
                        </tr>
                        <tr>
                            <td>Phaser</td>
                            <td>free (MIT)</td>
                            <td>4.5/5</td>
-                           <td></td>
+                           <td><span style="border: 1px solid #ddd;border-radius: 5px;">js engine</span></td>
                            <td>Feb 23rd 2015</td>
-                           <td>link</td>
+                           <td><a href="pics/phaser.png" style="margin-left: 20px" data-lightbox="image-4"><i class="fa fa-file-image-o"></i></a></td>
                        </tr>
                        <tr>
                            <td>GameMaker</td>
                            <td>$200</td>
                            <td>4/5</td>
-                           <td></td>
+                           <td><span style="border: 1px solid #ddd;border-radius: 5px;">game maker</span></td>
                            <td>Aug 8th 2014</td>
-                           <td>link</td>
+                           <td><a href="pics/GameMakerStudio_DragandDropLevelEditing.png" style="margin-left: 20px" data-lightbox="image-4"><i class="fa fa-file-image-o"></i></a></td>
                        </tr>
                        </tbody>
                    </table>
@@ -146,7 +151,7 @@
                     If, you're not a good artist (drawing, creating musics and sound effects)...
                     <div class="fragment" style="text-align: left;">
                         <ul style="margin-left: 110px;">
-                            <li>Use the web! (Free Tools, Sprite Resources Web Sites)</li>
+                            <li>Use the web! (<a href="pics/as3sfxr.swf" class="lightview" data-lightview-type="flash" >Free Tools</a>, Sprite Resources Web Sites)</li>
                             <li class="fragment">
                                 Look at video game files
                                 <a href="pics/file_1.PNG" data-lightbox="image-10" style="margin-left: 10px"><i class="fa fa-file-text-o"></i></a>
@@ -160,16 +165,19 @@
 
 		</section>
 
-		<section id="game_menu">
-			<h3>I - Create Menu<img id="trigger-overlay" onclick="loadGameSection('game_menu')" src="pics/flappy_bird.png" class="shadowed"></h3>
+		<section id="game_menu" data-transition="convex">
+			<h3>I - Create Start Screen<img id="trigger-overlay" onclick="loadGameSection('game_menu')" src="pics/flappy_bird.png" class="shadowed"></h3>
             <ul>
-                <li class="fragment">Load and display image resources <a href="pics/marioworld1bl4nq.png.jpg" data-lightbox="image-1"><i class="fa fa-file-image-o"></i></a></li>
+                <li class="fragment">Load and display image resources
+                    <a href="pics/marioworld1bl4nq.png.jpg" data-lightbox="image-1"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/all_sprites.png" data-lightbox="image-1"><i class="fa fa-file-image-o"></i></a>
+                </li>
                 <li class="fragment">Definition: Sprite</li>
             </ul>
             <ul style="margin-left:100px">
-                <li class="fragment" style="list-style-type: circle;">static sprite: background image, title</li>
+                <li class="fragment" style="list-style-type: circle;">static sprites: background image, title</li>
                 <li class="fragment" style="list-style-type: circle;">animated sprite: the bird character</li>
-                <li class="fragment" style="list-style-type: circle;">tiled sprite: the floor</li>
+                <li class="fragment" style="list-style-type: circle;">animated sprite: tiled sprite: the floor</li>
             </ul>
             </ul>
             <aside class="notes">
@@ -177,7 +185,7 @@
             </aside>
 		</section>
 
-		<section id="game_physic">
+		<section id="game_physic" data-transition="convex">
 			<h3>II - Bird Behavior<img id="trigger-overlay_physic" onclick="loadGameSection('game_physic')" src="pics/flappy_bird.png" class="shadowed"></h3>
             <ul>
                 <li class="fragment">Character animation using Physic Engine</li>
@@ -198,26 +206,31 @@
             </aside>
 		</section>
 
-		<section id="game_pipe">
+		<section id="game_pipe" data-transition="convex">
 			<h3>III - Obstacles Generation<img id="trigger-overlay_pipe" onclick="loadGameSection('game_pipe')" src="pics/flappy_bird.png" class="shadowed"></h3>
             <ul>
                 <li class="fragment">
                     Load Pipe sprites
-                    <a href="pics/morceaux-pipe.jpg" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/Screenshot_pipe.jpg" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/Mobile%20-%20Flappy%20Bird%20-%20General%20Sprites.jpg" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
                     <a href="pics/tuyaux.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
                 </li>
-                <li class="fragment" >Use Timer</li>
                 <li class="fragment" >Determine space's position between pipe pair</li>
-                <li class="fragment">Generate top & bottom pipes around space</li>
+                <li class="fragment">Generate set of pipes<a href="pics/morceaux-pipe.jpg" style="margin-left: 20px" data-lightbox="image-53"><i class="fa fa-file-image-o"></i></a></li>
+                <li class="fragment" >Move all pipes from left to right</li>
+                <li class="fragment" >Use Timer</li>
                 <li class="fragment">Adapt level of difficulty</li>
                 <li class="fragment">
                     Add collision detection
                     <a href="pics/collision.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/collide_1.PNG" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/Collide_2.PNG" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
+                    <a href="pics/collide_3.PNG" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a>
                 </li>
             </ul>
 		</section>
 
-		<section>
+		<section data-transition="convex">
             <audio id="sfx_die" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_die.ogg"></audio>
             <audio id="sfx_hit" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_hit.ogg"></audio>
             <audio id="sfx_point" src="../4_ScoringAndSoundTutorial/assets/snd/sfx_point.ogg"></audio>
@@ -227,16 +240,20 @@
 			<h3>IV - Scoring and Sound Effect<img id="trigger-overlay_sound" onclick="loadGameSection('game_sound')" src="pics/flappy_bird.png" class="shadowed"></h3>
             <ul>
                 <li class="fragment">Display Player Score<a href="pics/numbers.png" style="margin-left: 20px" data-lightbox="image-7"><i class="fa fa-file-image-o"></i></a></li>
-                <li class="fragment">Add Sound Effects
+                <li class="fragment">Add Sound Effects (no music!)
                     <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:coin" onclick="document.getElementById('sfx_die').play()"></i></a>
                     <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:breakblock" onclick="document.getElementById('sfx_hit').play()"></i></a>
                     <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:jump_small" onclick="document.getElementById('sfx_point').play()"></i></a>
                     <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('sfx_swooshing').play()"></i></a>
                     <a><i class="fa fa-file-audio-o" style="margin-left: 10px; cursor: pointer" title="sfx:stage_clear" onclick="document.getElementById('sfx_wing').play()"></i></a>
                 </li>
-                <li class="fragment">Add GameOver Screen</li>
+                <li class="fragment">Add GameOver Screen<a href="pics/Screenshot_GameOver.jpg" style="margin-left: 20px" data-lightbox="image-89"><i class="fa fa-file-image-o"></i></a></li>
             </ul>
 		</section>
+
+        <section data-transition="zoom">
+            <img src="pics/Thank_you_post_it_note.png" style="background: none;border: none;box-shadow: none;">
+        </section>
 
 	</div>
 
@@ -279,25 +296,71 @@
 
             <!-- game options Physic section -->
             <div id="options_game_physic" class="outer-nav" style="margin-top: 50px;display:none;  text-align: right;">
+
                 <a>
-                    <span>Enable click event</span>
-                    <i onclick="game.state.states.main.toggleClickEvent();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <span>Disable Tween</span>
+                    <i id="tween" onclick="game.state.states.main.toggleTween();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
                 <a>
-                    <span>Apply Gravity</span>
-                    <i onclick="game.state.states.main.toggleGravity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <span>Set Gravity</span>
+                    <i id="gravity" onclick="game.state.states.main.toggleGravity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
                 <a>
-                    <span>Add Velocity</span>
-                    <i onclick="game.state.states.main.setVelocity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <span>Set Velocity</span>
+                    <i id="velocity" onclick="game.state.states.main.toggleVelocity();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
+                <a>
+                    <span>Apply Rotation</span>
+                    <i id="rotation" onclick="game.state.states.main.toggleRotation();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Apply Ground Collision</span>
+                    <i id="collision" onclick="game.state.states.main.toggleCollision();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <script>
+                    function initializeOptionPhysic(){
+                        $('#clickEvent2').removeClass("fa-check-square-o fa-square-o");
+                        $('#tween').removeClass("fa-check-square-o fa-square-o");
+                        $('#gravity').removeClass("fa-check-square-o fa-square-o");
+                        $('#velocity').removeClass("fa-check-square-o fa-square-o");
+                        $('#rotation').removeClass("fa-check-square-o fa-square-o");
+                        $('#collision').removeClass("fa-check-square-o fa-square-o");
+
+                        if (!flagClickEvent)
+                            $('#clickEvent2').addClass("fa-square-o");
+                        else
+                            $('#clickEvent2').addClass("fa-check-square-o");
+
+                        if (!flagDisableTween)
+                            $('#tween').addClass("fa-square-o");
+                        else
+                            $('#tween').addClass("fa-check-square-o");
+                        if (!flagRotation)
+                            $('#rotation').addClass("fa-square-o");
+                        else
+                            $('#rotation').addClass("fa-check-square-o");
+                        if (!flagColision)
+                            $('#collision').addClass("fa-square-o");
+                        else
+                            $('#collision').addClass("fa-check-square-o");
+                        if (!flagGravity)
+                            $('#gravity').addClass("fa-square-o");
+                        else
+                            $('#gravity').addClass("fa-check-square-o");
+
+                        if (!flagColision)
+                            $('#velocity').addClass("fa-square-o");
+                        else
+                            $('#velocity').addClass("fa-check-square-o");
+                    }
+                </script>
             </div>
 
             <!-- game options Pipe section -->
             <div id="options_game_pipe" class="outer-nav" style="margin-top: 50px;display:none;margin-left: -50px;  text-align: right;">
                 <a>
                     <span>Enable click event</span>
-                    <i onclick="game.state.states.main.togglePipeGeneration();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i id="clickEvent" onclick="game.state.states.main.togglePipeGeneration();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
                 <a>
                     <span>Add Pipe Sprite</span>
@@ -313,20 +376,74 @@
                 </a>
                 <a>
                     <span>Show Collide Box</span>
-                    <i onclick="game.state.states.main.toggleCollideBox();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i id="collideBox" onclick="game.state.states.main.toggleCollideBox();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
                 <a>
                     <span>Enable Collide Polygon</span>
-                    <i onclick="game.state.states.main.toggleCollidePolygon();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <i id="collidePoly" onclick="game.state.states.main.toggleCollidePolygon();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
+
+                <script>
+                    function initializeOptionPipe(){
+                        $('#collidePoly').removeClass("fa-check-square-o fa-square-o");
+                        $('#collideBox').removeClass("fa-check-square-o fa-square-o");
+                        $('#clickEvent').removeClass("fa-check-square-o fa-square-o");
+
+                        if (!flagGeneratePipes)
+                            $('#clickEvent').addClass("fa-square-o");
+                        else
+                            $('#clickEvent').addClass("fa-check-square-o");
+
+                        if (!flagCollidePolygon)
+                            $('#collideBox').addClass("fa-square-o");
+                        else
+                            $('#collideBox').addClass("fa-check-square-o");
+
+                        if (!flagShowCollideBox)
+                            $('#collidePoly').addClass("fa-square-o");
+                        else
+                            $('#collidePoly').addClass("fa-check-square-o");
+                    }
+                </script>
             </div>
 
             <!-- game options sound section -->
             <div id="options_game_sound" class="outer-nav" style="margin-top: 50px;display:none;margin-left: -50px;  text-align: right;">
                 <a>
-                    <span>Enable click event</span>
-                    <i onclick="game.state.states.main.togglePipeGeneration();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                    <span>Display Score</span>
+                    <i id="showSpriteScore" onclick="game.state.states.main.toggleScore();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
                 </a>
+                <a>
+                    <span>Enable Sound</span>
+                    <i id="enableSound" onclick="game.state.states.main.enableSound();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+                <a>
+                    <span>Add GameOver Screen</span>
+                    <i id="enableGameOverScreen" onclick="game.state.states.main.enableGameOverScreen();toggleIcon(this)" class="fa fa-2x fa-square-o"></i>
+                </a>
+
+                <script>
+                    function initializeOptionSound(){
+                        $('#showSpriteScore').removeClass("fa-check-square-o fa-square-o");
+                        $('#enableSound').removeClass("fa-check-square-o fa-square-o");
+                        $('#enableGameOverScreen').removeClass("fa-check-square-o fa-square-o");
+
+                        if (!showSpriteScore)
+                            $('#showSpriteScore').addClass("fa-square-o");
+                        else
+                            $('#showSpriteScore').addClass("fa-check-square-o");
+
+                        if (!enableSound)
+                            $('#enableSound').addClass("fa-square-o");
+                        else
+                            $('#enableSound').addClass("fa-check-square-o");
+
+                        if (!enableGameOver)
+                            $('#enableGameOverScreen').addClass("fa-square-o");
+                        else
+                            $('#enableGameOverScreen').addClass("fa-check-square-o");
+                    }
+                </script>
 
             </div>
 
@@ -340,10 +457,15 @@
 
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="lib/js/html5shiv.js"></script>
 <script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/jquery-1.11.0.min.js"></script>
+<script src="lib/js/html5shiv.js"></script>
+
+
 <script type="text/javascript" src="lib/lightbox-2.7.1/lightbox/js/lightbox.min.js"></script>
+
+<script type="text/javascript" src="lib/lightview-3.4.0/js/lightview/swfobject.js"></script>
+<script type="text/javascript" src="lib/lightview-3.4.0/js/spinners/spinners.min.js"></script>
+<script type="text/javascript" src="lib/lightview-3.4.0/js/lightview/lightview.js"></script>
 
 <script type="text/javascript" src="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/js/modernizr.custom.js"></script>
 <script type="text/javascript" src="lib/FullscreenOverlayStyles/FullscreenOverlayStyles/js/classie.js"></script>
@@ -389,12 +511,12 @@
 
         if ( $('#options_game_menu').is(':visible') )
             $('#options_game_menu .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
-        else if ( $('#options_game_physic').is(':visible') )
-            $('#options_game_physic .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
-        else if ( $('#options_game_pipe').is(':visible') )
-            $('#options_game_pipe .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
-        else if ( $('#options_game_sound').is(':visible') )
-            $('#options_game_sound .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        //else if ( $('#options_game_physic').is(':visible') )
+        //    $('#options_game_physic .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        //else if ( $('#options_game_pipe').is(':visible') )
+        //    $('#options_game_pipe .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
+        //else if ( $('#options_game_sound').is(':visible') )
+        //    $('#options_game_sound .fa-check-square-o').removeClass("fa-check-square-o").addClass("fa-square-o");
     }
 
     function destroyGame(){
@@ -424,23 +546,28 @@
             }
             case 'game_physic':{
                 window.prefixPathSrc = "../2_PhysicTutorial/";
-                $.getScript("../2_PhysicTutorial/physicTutorial.js");
-                $('#options_'+sectionName).show();
+                $.getScript("../2_PhysicTutorial/physicTutorial.js").done(function() {
+                    initializeOptionPhysic();
+                });
                 break;
             }
             case 'game_pipe':{
                 window.prefixPathSrc = "../3_ObstacleTutorial/";
-                $.getScript("../3_ObstacleTutorial/main.js");
-                $('#options_'+sectionName).show();
+                $.getScript("../3_ObstacleTutorial/main.js").done(function() {
+                    initializeOptionPipe();
+                });
                 break;
             }
             case 'game_sound':{
                 window.prefixPathSrc = "../4_ScoringAndSoundTutorial/";
-                $.getScript("../4_ScoringAndSoundTutorial/main.js");
-                $('#options_'+sectionName).show();
+                $.getScript("../4_ScoringAndSoundTutorial/main.js").done(function() {
+                    initializeOptionSound();
+                });
                 break;
             }
         }
+
+        $('#options_'+sectionName).show();
 
     }
 

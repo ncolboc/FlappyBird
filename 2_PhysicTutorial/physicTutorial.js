@@ -1,8 +1,15 @@
 /**
  * Created by macfly on 11/04/2015.
  */
+
+var flagDisableTween = false;
+var flagGravity = false;
+var flagVelocity = false;
 var flagRotation = false;
+
 var flagClickEvent = false;
+
+var flagColision = false;
 var game = new Phaser.Game(640, 960,Phaser.AUTO,'canvas');
 game.transparent = false;
 
@@ -62,21 +69,27 @@ gameState.main.prototype = {
         this.bird.animations.add('fly');
         this.bird.animations.play('fly', 8, true);
 
-        this.tweenFlap = this.game.add.tween(this.bird);
-        this.tweenFlap.to({ y: this.bird.y + 20}, 400, Phaser.Easing.Quadratic.InOut, true, 0, 10000000000, true);
+        if (!flagDisableTween){
+            this.tweenFlap = this.game.add.tween(this.bird);
+            this.tweenFlap.to({ y: this.bird.y + 20}, 400, Phaser.Easing.Quadratic.InOut, true, 0, 10000000000, true);
+        }
 
         // Au click, on appelle la fonction "start()"
-        if (flagClickEvent)
+        //if (flagClickEvent)
             this.game.input.onTap.add(this.start, this);
 
     },
     update:function(){
+
+        console.log(this.bird.body.velocity.y,this.bird.body.gravity.y);
+
         if(this.ground.x + this.ground.width / 2 <= 0) {
             this.ground.x = 0;
         }
 
         // Si l'oiseau touche le sol
-        this.game.physics.overlap(this.bird, this.ground, this.colisionDetected, null, this);
+        if (flagColision)
+            this.game.physics.overlap(this.bird, this.ground, this.colisionDetected, null, this);
 
         if(this.bird.body.velocity.y > 0 && this.birdInJump) {
             this.birdInJump = false;
@@ -99,7 +112,6 @@ gameState.main.prototype = {
         this.bird.body.enable = false;
         this.bird.body.velocity.y = 0;
         this.bird.body.gravity.y = 0;
-        //this.bird.y = this.ground.y - this.bird.height/2;
     },
     start:function(){
         this.game.input.onTap.removeAll();
@@ -108,13 +120,20 @@ gameState.main.prototype = {
         this.title.visible = false;
         this.title_ready.visible = false;
         // Gravité de l'oiseau
-        //this.bird.body.gravity.y = 2000;
+        if (flagGravity)
+            this.bird.body.gravity.y = 2000;
         // Premier saut
-        //this.bird.body.velocity.y = -600;
+        if (flagVelocity)
+            this.bird.body.velocity.y = -600;
         this.tweenFlap.stop();
-        //this.bird.animations.stop('fly');
+        this.bird.animations.stop('fly');
         // Pour la rendre plus rapide
-        //this.bird.animations.play('fly', 15, true);
+        this.bird.animations.play('fly', 15, true);
+        if (flagRotation && flagVelocity)
+            this.bird.rotation = -Math.PI / 8;
+        else if (flagRotation && !flagVelocity){
+            this.jump();
+        }
     },
     render:function(){
 
@@ -125,7 +144,11 @@ gameState.main.prototype = {
             return;
 
         if(this.bird.y >= 0){
+            if (flagVelocity)
             this.bird.body.velocity.y = -600;
+
+            if (flagGravity)
+                this.bird.body.gravity.y = 2000;
 
             if (flagRotation){
                 if(this.tweenFall != null)
@@ -142,8 +165,17 @@ gameState.main.prototype = {
     restartGame: function () {
         game.state.start(game.state.current);
     },
+    toggleTween: function () {
+        flagDisableTween = !flagDisableTween;
+        this.restartGame();
+    },
     toggleGravity: function (gravity) {
 
+        flagGravity = !flagGravity;
+        this.restartGame();
+        //if (flagGravity)
+
+        /*
         if (gravity === undefined){
             gravity = 2000;
         }
@@ -156,28 +188,21 @@ gameState.main.prototype = {
             //this.tweenFlap.start();
             this.bird.body.gravity.y = 0;
         }
+        */
     },
-    setVelocity: function (velocity) {
+    toggleVelocity: function (velocity) {
 
-        if (velocity === undefined){
-            velocity = -600;
-        }
-
-        this.bird.body.velocity.y = velocity;
+        flagVelocity = !flagVelocity;
+        this.restartGame();
 
     },
     toggleRotation: function () {
-        if (!flagRotation){
-            this.game.input.onDown.removeAll();
-        }
-        else{
-            this.game.input.onDown.add(this.jump, this);
-        }
-
         flagRotation = !flagRotation;
+        this.restartGame();
     },
     toggleCollision: function () {
-        this.game.physics.overlap(this.bird, this.ground, this.colisionDetected, null, this);
+        flagColision = !flagColision;
+        this.restartGame();
     },
     toggleClickEvent: function () {
         flagClickEvent = !flagClickEvent;

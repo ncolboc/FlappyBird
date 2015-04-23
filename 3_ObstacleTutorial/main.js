@@ -109,9 +109,9 @@ gameState.main.prototype = {
 
 
         // Si l'oiseau touche le sol
-
+        this.game.physics.overlap(this.bird, this.ground, this.pauseGame, null, this);
         if (flagShowCollideBox){
-            this.game.physics.overlap(this.bird, this.ground, this.pauseGame, null, this);
+
             this.game.physics.overlap(this.bird, this.pipes, this.pauseGame, null, this);
             this.game.physics.overlap(this.bird, this.pipesEndTop, this.pauseGame, null, this);
             this.game.physics.overlap(this.bird, this.pipesEndBottom, this.pauseGame, null, this);
@@ -227,6 +227,7 @@ gameState.main.prototype = {
     restartGame: function () {
         if (this.pipeGenerator)
             this.game.time.events.remove(this.pipeGenerator);
+        game.state.start(game.state.current);
         game.state.start(game.state.current);
     },
     pauseGame: function () {
